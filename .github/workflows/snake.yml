@@ -1,0 +1,36 @@
+# 🐍 Animated contribution-grid snake for rumman02's profile README
+# Generates an SVG of the contribution grid with an animated snake eating
+# the squares. Runs on every push to main and once daily on a schedule.
+name: Generate Snake
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * *" # every day at 00:00 UTC
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Generate snake SVGs (dark + light)
+        uses: Platane/snk@v3
+        with:
+          github_user_name: rumman02
+          outputs: |
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
+            dist/github-contribution-grid-snake.svg?palette=github-light
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish SVGs to the output branch (commit into repo)
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
