@@ -57,10 +57,7 @@ Drop-in replacement for Puppeteer & Playwright.
 </td>
 <td width="45%">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rumman02/rumman02/main/assets/snake-dark.svg" />
-  <img src="https://raw.githubusercontent.com/rumman02/rumman02/main/assets/snake-dark.svg" alt="camofox demo" />
-</picture>
+<img src="https://raw.githubusercontent.com/rumman02/rumman02/output/github-contribution-grid-snake-dark.svg" alt="animated contribution trail" />
 
 <div align="center">
 
